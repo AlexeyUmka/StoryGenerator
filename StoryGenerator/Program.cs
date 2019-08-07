@@ -236,6 +236,7 @@ namespace StoryGenerator
             Console.WriteLine("А делал сложный выбор {0} раз.", hero.DifficultChoice);
             Console.WriteLine("Завершил свой путь с такими показателями: ");
             Console.WriteLine(hero.GetStatus());
+            Console.ReadKey();
         }
     }
     public static class ScenarioGenerator
