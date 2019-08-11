@@ -43,11 +43,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Choices\TripleChoice.cs" />
+    <Compile Include="Commons\Common.cs" />
+    <Compile Include="CustomExceptions\CustomException.cs" />
+    <Compile Include="CustomExceptions\WrongKeyException.cs" />
+    <Compile Include="Enemies\Deadline.cs" />
+    <Compile Include="Enemies\Delay.cs" />
+    <Compile Include="Enemies\Laziness.cs" />
+    <Compile Include="Hero.cs" />
+    <Compile Include="IEntity.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RestPlaces\FirstTypeRest.cs" />
+    <Compile Include="ScenarioGenerator.cs" />
+    <Compile Include="SpendingByStep.cs" />
+    <Compile Include="Treasures\Food\Chocolate.cs" />
+    <Compile Include="Treasures\Food\FreshRat.cs" />
+    <Compile Include="Treasures\Food\Potato.cs" />
+    <Compile Include="Treasures\Medecine\Medecine.cs" />
+    <Compile Include="Treasures\Mind\Flashlight.cs" />
+    <Compile Include="Treasures\Mind\Matches.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
