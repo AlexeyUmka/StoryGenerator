@@ -57,6 +57,7 @@
     <Compile Include="RestPlaces\FirstTypeRest.cs" />
     <Compile Include="ScenarioGenerator.cs" />
     <Compile Include="SpendingByStep.cs" />
+    <Compile Include="Teller.cs" />
     <Compile Include="Treasures\Food\Chocolate.cs" />
     <Compile Include="Treasures\Food\FreshRat.cs" />
     <Compile Include="Treasures\Food\Potato.cs" />

@@ -9,11 +9,6 @@ namespace StoryGenerator
     public static class SpendingByStep
     {
         public static Hero setHero;
-        public static int healthSpending = 0;
-        public static int foodSpending = 0;
-        public static int energySpending = 0;
-        public static int mindSpending = 0;
-
         public static void InvokeSpending(int healthSp, int foodSp, int energySp, int mindSp)
         {
             setHero.Health += healthSp;
