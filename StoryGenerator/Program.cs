@@ -15,6 +15,7 @@ namespace StoryGenerator
             Console.SetWindowSize(160, 41);
             Hero hero = new Hero();
             ScenarioGenerator.InvokeStartGameEvent(hero, Teller.Story);
+            Console.WriteLine("CollectionsGeneric");
             Console.ReadKey();
         }
     }
