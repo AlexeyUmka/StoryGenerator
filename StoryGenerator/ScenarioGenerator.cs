@@ -223,6 +223,12 @@ namespace StoryGenerator
                 Console.WriteLine("А делал сложный выбор {0} раз.", hero.DifficultChoice);
             Console.WriteLine("Завершил свой путь с такими показателями: ");
             Console.WriteLine(hero.GetStatus());
+            Console.WriteLine("А вот история его пути:");
+            Teller.DisplayWay();
+            if (hero.IsAlive)
+                Console.Write("X- Логово админа");
+            else
+                Console.Write("<- Место смерти(");
         }
         private static void FindedTreasureHandler(Hero hero)
         {
@@ -238,18 +244,21 @@ namespace StoryGenerator
                     {
                         case Food.Chocolate:
                             mes = "Шоколад(+15 к еде + 10 к рассудку)";
+                            Teller.AddSectionToWay(new Chocolate(1));
                             Teller.WriteTopInformation(hero, string.Format(pre + mes), ConsoleColor.Black);
                             SpendingByStep.InvokeSpending(new Chocolate(1));
                             hero.ChocolateAte++;
                             break;
                         case Food.Potato:
                             mes = "Картошку(+5 к еде)";
+                            Teller.AddSectionToWay(new Potato(1));
                             Teller.WriteTopInformation(hero, string.Format(pre + mes), ConsoleColor.Black);
                             SpendingByStep.InvokeSpending(new Potato(1));
                             hero.PotatoAte++;
                             break;
                         case Food.FreshRat:
                             mes = "Мертвую крысу(ещё теплая), вкуснятина!(пробел)(не употреблять) E-(+30 к еде -30 к рассудку + 15 к енергии)";
+                            Teller.AddSectionToWay(new FreshRat(1));
                             while (true)
                             {
                                 try
@@ -282,6 +291,7 @@ namespace StoryGenerator
                     break;
                 case Treasure.Medecines:
                     mes = "Медикаменты(+20 к здоровью)";
+                    Teller.AddSectionToWay(new Medecine(1));
                     Teller.WriteTopInformation(hero, string.Format(pre + mes), ConsoleColor.Black);
                     SpendingByStep.InvokeSpending(new Medecine(1));
                     hero.MedicineUsed++;
@@ -292,11 +302,13 @@ namespace StoryGenerator
                     {
                         case Mind.Match:
                             mes = "Спички(+10 к рассудку)";
+                            Teller.AddSectionToWay(new Matches(1));
                             Teller.WriteTopInformation(hero, string.Format(pre + mes), ConsoleColor.Black);
                             SpendingByStep.InvokeSpending(new Matches(1));
                             break;
                         case Mind.FlashLight:
                             mes = "Фонарик(+20 к рассудку)";
+                            Teller.AddSectionToWay(new Flashlight(1));
                             Teller.WriteTopInformation(hero, string.Format(pre + mes), ConsoleColor.Black);
                             SpendingByStep.InvokeSpending(new Flashlight(1));
                             hero.Mind += 20;
@@ -313,6 +325,7 @@ namespace StoryGenerator
             {
                 case Enemy.Laziness:
                     mes = "Лень Сражаться(пробел)(-10 к здоровью)E-убежать(-10 к енергии)";
+                    Teller.AddSectionToWay(new Laziness(1));
                     while (true)
                     {
                         try
@@ -343,6 +356,7 @@ namespace StoryGenerator
                     break;
                 case Enemy.Delay:
                     mes = "Прокрастинация Сражаться(пробел)(-20 к здоровью)E-убежать(-10 к енергии)";
+                    Teller.AddSectionToWay(new Delay(1));
                     while (true)
                     {
                         try
@@ -373,6 +387,7 @@ namespace StoryGenerator
                     break;
                 case Enemy.Deadline:
                     mes = "ДЭДЛАЙН! Сражаться(пробел)(-40 к здоровью)E-убежать(-20 к енергии)";
+                    Teller.AddSectionToWay(new Deadline(1));
                     while (true)
                     {
                         try
@@ -404,6 +419,7 @@ namespace StoryGenerator
             }
         }
         private static void FindedRestPlaceHandler(Hero hero) {
+            Teller.AddSectionToWay(new FirstTypeRest(1));
             ConsoleKey k;
             while (true)
             {
@@ -434,12 +450,14 @@ namespace StoryGenerator
             }
         }
         private static void FindedCommonHandler(Hero hero) {
+            Teller.AddSectionToWay(new Common(1));
             Teller.WriteTopInformation(hero, "Ничего интересного можно идти дальше", ConsoleColor.DarkGreen);
             SpendingByStep.InvokeSpending(new Common(1));
         }
         private static void FindedChoiceHandler(Hero hero) {
             hero.DifficultChoice++;
             ConsoleKey k;
+            Teller.AddSectionToWay(new TripleChoice(1));
             while (true)
             {
                 try
